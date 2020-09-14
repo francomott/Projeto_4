@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+
+    Trocar Senha - {{ block.super }}   
+
+{% endblock title %}
+
+{% block body %}
+    
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Alterar Senha</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+    </main>
+
+    <div id="containerForm">     
+        <div class="row">
+            <div class="col-md-12">
+                {% include 'partials/messages.html' %}
+                <form method="POST" action=".">
+                {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.old_password.id_for_label }}">Senha Antiga</label>
+                        {{ form.old_password|add_class:"form-control"|attr:"type:password"}}
+                        <small id="media_anual_unidade" class="text-muted">
+                            Precisa conter pelo menos 8 caracteres.  
+                            Não pode ser inteiramente numérica.  
+                        </small>     
+
+                    
+                    <div class="form-group">
+                        <label for="form.new_password1.id_for_label">Nova Senha</label>
+                        {{ form.new_password1|add_class:"form-control"|attr:"type:password"}}
+                    </div>
+                    <div class="form-group">
+                        <label for="form.new_password2.id_for_label">Confirmar Senha</label>
+                        {{ form.new_password2|add_class:"form-control"|attr:"type:password"}}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %} 

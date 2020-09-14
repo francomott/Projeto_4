@@ -1,0 +1,69 @@
+{% load static %}
+
+{% load widget_tweaks  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadastrar</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/adicionar.css' %}">
+</head>
+<body>
+
+    <div class="main">
+
+        
+        <div class="container">
+            <div class="sign-up-content">
+                <form method="POST" action="." class="signup-form">
+                {% csrf_token %}
+                    
+                    <h2 class="form-group">Cadastre-se</h2>
+
+                    <div class="form-group">
+                        <label for="{{ form.first_name.id_for_label }}">Nome</label>
+                        {{ form.first_name|add_class:"form-control"|attr:"autofocus" }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.last_name.id_for_label }}">Sobrenome</label>
+                        {{ form.last_name|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.username.id_for_label }}">Usuário</label>
+                        {{ form.username|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}">E-mail</label>
+                        {{ form.email|add_class:"form-control" }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.password.id_for_label }}">Senha</label>
+                        {{ form.password|add_class:"form-control"|attr:"type:password" }}
+                    </div>
+
+                    <div class="form-textbox">                      
+                        <button type="submit" class="submit">Cadastrar usuário</button>
+                    </div>
+                </form>
+
+                <p class="loginhere">
+                    Já tem uma conta?<a href="{% url 'accounts:user_login' %}" class="loginhere-link"> Entrar </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
